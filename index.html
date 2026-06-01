@@ -35,7 +35,7 @@
             font-size: 18px;
             font-weight: bold; 
             color: #d9534f; 
-            display: none; /* Hidden by default */
+            display: none;
             padding: 15px;
             border: 2px dashed #d9534f;
             background-color: #fdf7f7;
@@ -54,23 +54,14 @@
     <div id="button-container"></div>
 
    <script>
-        // =====================================================================
-        // GENERATE THE CLICKABLE LINK FOR THE CONSOLE
-        // This automatically figures out the correct URL for your secret.html page
-        // =====================================================================
         const secretPageUrl = window.location.href.replace('index.html', '').replace(/\/$/, '') + '/secret.html';
 
-        // This prints the styled secret message
         console.log("%c🎉 YOU FOUND THE SECRET CONSOLE!", "color: #27ae60; font-size: 22px; font-weight: bold; font-family: sans-serif;");
         
-        // This prints the text instruction
         console.log("Click the link below to claim your prize and go to the secret page:");
         
-        // This prints the actual URL. The browser will automatically make this a clickable link!
         console.log(secretPageUrl);
         
-        // =====================================================================
-
         const container = document.getElementById('button-container');
         const hintMessage = document.getElementById('hint-message');
         const totalButtons = 200; 
