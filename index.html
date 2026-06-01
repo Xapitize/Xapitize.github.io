@@ -53,52 +53,49 @@
 
     <div id="button-container"></div>
 
-    <script>
+   <script>
         // =====================================================================
-        // PUT YOUR HIDDEN MESSAGE HERE
-        // This is the message that prints to the F12 Developer Console.
-        // Change the text inside the quotes below to whatever you want to hide!
+        // GENERATE THE CLICKABLE LINK FOR THE CONSOLE
+        // This automatically figures out the correct URL for your secret.html page
         // =====================================================================
+        const secretPageUrl = window.location.href.replace('index.html', '').replace(/\/$/, '') + '/secret.html';
+
+        // This prints the styled secret message
+        console.log("%c🎉 YOU FOUND THE SECRET CONSOLE!", "color: #27ae60; font-size: 22px; font-weight: bold; font-family: sans-serif;");
         
-        console.log("%c🎉 YOU FOUND IT! Here is the super secret hidden message!", "color: green; font-size: 20px; font-weight: bold;");
+        // This prints the text instruction
+        console.log("Click the link below to claim your prize and go to the secret page:");
+        
+        // This prints the actual URL. The browser will automatically make this a clickable link!
+        console.log(secretPageUrl);
         
         // =====================================================================
 
         const container = document.getElementById('button-container');
         const hintMessage = document.getElementById('hint-message');
-        const totalButtons = 200; // Total number of distracting buttons
-        const specialButtonIndex = 86; // The 87th button will be the one with the direct alert
-        let clickCount = 0; // Starts the click counter at 0
+        const totalButtons = 200; 
+        const specialButtonIndex = 86; 
+        let clickCount = 0; 
 
-        // Function that runs every time a normal button is clicked
         function handleButtonClick() {
             clickCount++;
-            
-            // Check if they reached 100 clicks
             if (clickCount === 100) {
-                hintMessage.style.display = 'block'; // Unhides the hint message
+                hintMessage.style.display = 'block'; 
             }
         }
 
-        // Loop to generate all 200 buttons automatically
         for (let i = 0; i < totalButtons; i++) {
             const btn = document.createElement('button');
-            
-            // Create the ONE special button
             if (i === specialButtonIndex) {
                 btn.textContent = "Click Me";
                 btn.onclick = function() {
                     alert("Nothing here... but maybe you should check F12?");
-                    handleButtonClick(); // Add to the click count
+                    handleButtonClick(); 
                 };
-            } 
-            // Create all the normal distracting buttons
-            else {
+            } else {
                 btn.textContent = "Button " + (i + 1);
                 btn.onclick = handleButtonClick;
             }
-            
-            // Add the button to the webpage
             container.appendChild(btn);
         }
     </script>
